@@ -3,53 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Información del Cliente</title>
+    <title>Detalles del Cliente - Amada Moda Sport</title>
     <style>
+        /* Colores del estilo del logo */
+        :root {
+            --primary-color: #FF6B6B; /* Color de fondo relacionado con el logo */
+            --text-color: #333; /* Color de texto */
+            --background-color: #FFF; /* Color de fondo del cuadro */
+            --logo-color: #333; /* Color para el nombre del local */
+        }
+
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f7f7f7;
+            min-height: 100vh;
+            background-color: var(--primary-color);
+            position: relative;
         }
-        .info-container {
-            background: #ffffff;
+
+        /* Barra de navegación */
+        .navbar {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .navbar a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 5px;
+            background-color: var(--background-color);
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .container {
+            text-align: center;
+            background-color: var(--background-color);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
         }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 350px; /* Ajuste del tamaño del logo a 120px */
+            height: auto;
+        }
+
         h1 {
-            color: #333;
+            color: var(--logo-color);
+            font-size: 24px;
+            margin: 10px 0;
         }
-        p {
-            color: #555;
-            font-size: 1.1em;
+
+        .details {
+            margin-top: 20px;
+            text-align: left;
+            color: var(--text-color);
+        }
+
+        .details div {
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="info-container">
-        <h1>Información del Cliente</h1>
-        <p><strong>Nombre:</strong> <span id="nombre"></span></p>
-        <p><strong>Dirección:</strong> <span id="direccion"></span></p>
-        <p><strong>Teléfono:</strong> <span id="telefono"></span></p>
+    <!-- Enlace de soporte en la esquina superior derecha -->
+    <div class="navbar">
+        <a href="URL_DE_SOPORTE">Soporte</a> <!-- Reemplaza URL_DE_SOPORTE con el enlace de soporte -->
+    </div>
+
+    <img src="LOGO.jpg" alt="Logo Amada Moda Sport" class="logo"> <!-- Reemplaza URL_DEL_LOGO con la URL del logo en tu servidor -->
+    <div class="container">
+        <h1>Amada Moda Sport</h1>
+        <div class="details">
+            <div><strong>Nombre:</strong> <span id="nombre"></span></div>
+            <div><strong>Dirección:</strong> <span id="direccion"></span></div>
+            <div><strong>Teléfono:</strong> <span id="telefono"></span></div>
+        </div>
     </div>
 
     <script>
-        // Función para obtener parámetros de la URL
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
+        function getParameterByName(name) {
+            const url = new URL(window.location.href);
+            return url.searchParams.get(name);
         }
 
-        // Asignar los valores de los parámetros a los elementos de la página
-        document.getElementById('nombre').textContent = getQueryParam('nombre') || 'No disponible';
-        document.getElementById('direccion').textContent = getQueryParam('direccion') || 'No disponible';
-        document.getElementById('telefono').textContent = getQueryParam('telefono') || 'No disponible';
+        document.getElementById("nombre").innerText = getParameterByName("nombre") || "No disponible";
+        document.getElementById("direccion").innerText = getParameterByName("direccion") || "No disponible";
+        document.getElementById("telefono").innerText = getParameterByName("telefono") || "No disponible";
     </script>
 </body>
 </html>
-
